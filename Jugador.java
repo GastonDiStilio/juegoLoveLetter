@@ -4,57 +4,39 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jugador {
-		String usuario;
-		Carta [] vCarta;		
-		
-		
-		public Jugador(String user) {
-			usuario = user;
-			vCarta = new Carta[2];
-		}
-		
-		public void asignarCarta(Carta c) {
-				if(vCarta.length==0)
-					vCarta[0] = c;
-				else vCarta[1] = c;
-		}
-		
-		public void tirarCarta(Carta[] v, int n) {
-			System.out.println(v[n]);
-			v[n].activarEfecto();
-			v[n].setFuerza(0);
-		}
-		
-		public void descartarCarta() {
-			Scanner cartaElegida = new Scanner(System.in);
-			boolean condes = false, rey=false, principe = false;
-			int cartaElijo, n=0, pos;
-			
+			String usuario;
+	List <Carta> manoCartas;
+	
+	
+	public Jugador2(String user) {
+		usuario = user;
+		 manoCartas = new LinkedList<Carta>();	
+	}
+	
+	public void asignarCarta(Carta c) {
+			manoCartas.add(c);
+	}
+	
+	public void tirarCarta(int n) {
+		System.out.println(manoCartas);
+		System.out.println("El jugador tira: "+manoCartas.remove(n));
 
-			
-			for(Carta c : vCarta)
-			{
-				if(c.compararCartas(new Condesa("Condesa","asd",9))==0) {
-					System.out.println("Solo puede tirar un príncipe o rey");
-					condes = true;
-					pos = n;
-				}
-				if(c.compararCartas(new Rey("Rey","asd",6))==0)
-					rey = true;
-				if(c.compararCartas(new Principe("Principe","asd",5))==0)
-					principe = true;
-				
-				n++;
-			}
-			
-			if((principe == true || rey == true)&& condes == true)
-				{tirarCarta(vCarta, n);
-				return;
-				}
+	}
+	
+	public void descartarCarta() {
+		Scanner cartaElegida = new Scanner(System.in);
+		int n=0;
+		Carta c;
+		
+		if(manoCartas.contains(c=new Condesa("Condesa","asd",7)) && (manoCartas.contains(new Principe("Principe","asd",5)) || manoCartas.contains(new Rey("Rey","asd",6))))
+			n = manoCartas.indexOf(c)+1;
+		
+		else {
 			System.out.println("Elija una carta a tirar: 1 o 2: ");
-			cartaElijo = cartaElegida.nextInt();
-			tirarCarta(vCarta,cartaElijo-1);
-			
+		n = cartaElegida.nextInt();
 		}
+		tirarCarta(n);
+		
+	}
 		
 }
