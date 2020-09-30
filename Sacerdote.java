@@ -2,12 +2,16 @@ package loveLetter;
 
 public class Sacerdote extends Carta{
 
-	public Sacerdote(String n, String d, int f) {
-		super(n, d, f);
+	public Sacerdote() {
+		super("Sacerdote", "El jugador elige otro jugador para ver la cartas en su mano", 2);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public void activarEfecto() {
+
+	@Override
+	public void activarEfecto(Jugador2 j) {
+		// TODO Auto-generated method stub
 		
 	}
+	
+	
 }

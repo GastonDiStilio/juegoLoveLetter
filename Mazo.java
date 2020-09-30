@@ -12,33 +12,46 @@ public class Mazo  {
 	
 	public Mazo() {
 		mazoCartas = new ArrayList<Carta>();
-		mazoCartas.add(new Condesa("Condesa","",7));
-		mazoCartas.add(new Principe("Principe","",5));
-		mazoCartas.add(new Principe("Principe","",5));
-		mazoCartas.add(new Rey("Rey","",6));
-		mazoCartas.add(new Princesa("Princesa","",8));
-		mazoCartas.add(new Guardia("Guardia","",1));
-		mazoCartas.add(new Guardia("Guardia","",1));
-		mazoCartas.add(new Guardia("Guardia","",1));
-		mazoCartas.add(new Guardia("Guardia","",1));
-		mazoCartas.add(new Guardia("Guardia","",1));
+		mazoCartas.add(new Condesa());
+		mazoCartas.add(new Principe());
+		mazoCartas.add(new Principe());
+		mazoCartas.add(new Rey());
+		mazoCartas.add(new Princesa());
+		mazoCartas.add(new Guardia());
+		mazoCartas.add(new Guardia());
+		mazoCartas.add(new Guardia());
+		mazoCartas.add(new Guardia());
+		mazoCartas.add(new Guardia());
 		
-		mazoCartas.add(new Sacerdote("Sacerdote","",2));
-		mazoCartas.add(new Sacerdote("Sacerdote","",2));
+		mazoCartas.add(new Sacerdote());
+		mazoCartas.add(new Sacerdote());
 		
-		mazoCartas.add(new Baron("Baron","",3));
-		mazoCartas.add(new Baron("Baron","",3));
+		mazoCartas.add(new Baron());
+		mazoCartas.add(new Baron());
 		
-		mazoCartas.add(new Mucama("Mucama","",4));
-		mazoCartas.add(new Mucama("Mucama","",4));
-		
-		Collections.shuffle(mazoCartas);
+		mazoCartas.add(new Mucama());
+		mazoCartas.add(new Mucama());
+		cantCartas= 16;
+		//cantCartas = 16;}
+	
+	public void setCantCartas() {
 		cantCartas = 16;
 	}
 	
-	  public void reparto(Jugador j1) {
-		  j1.asignarCarta(mazoCartas.get(16-cantCartas));		  
+	public int getCantCartas() {
+		return this.cantCartas;
+	}
+	public void mezclarMazo() {
+		Collections.shuffle(mazoCartas);
+	}
+	
+	  public void reparto(Jugador2 j1) {
+		  
+		  j1.asignarCarta(mazoCartas.get(16-cantCartas));
+		  
 		  cantCartas--;
 	  }
 	
+}
+
 }

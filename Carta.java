@@ -10,7 +10,11 @@ public abstract class Carta  {
 			fuerza = f;
 		}
 		
-		
+		@Override
+		public String toString() {
+			return "\nCarta:"+nombre+" | "+descripcion+"Fuerza: "+fuerza;
+			
+		}
 		public int getFuerza() {
 			return fuerza;
 		}
@@ -21,10 +25,10 @@ public abstract class Carta  {
 		}
 
 
-		public abstract void activarEfecto();
+		public abstract void activarEfecto(Jugador2 j);
 		
 		public void mostrarCarta() {
-			
+			System.out.println(this);
 		}
 		
 		public int compararCartas(Carta c) {
